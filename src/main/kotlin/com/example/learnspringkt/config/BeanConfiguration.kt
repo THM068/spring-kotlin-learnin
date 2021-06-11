@@ -1,5 +1,6 @@
 package com.example.learnspringkt.config
 
+import com.example.learnspringkt.pojo.ClientService
 import com.example.learnspringkt.pojo.Person
 import com.example.learnspringkt.pojo.Product
 import org.springframework.context.annotation.Bean
@@ -20,4 +21,7 @@ class BeanConfiguration {
 
     @Bean(name = ["Plane"])
     fun product3() = Product(3L, "Plane")
+
+    @Bean
+    fun clientService() = ClientService.createInstance()
 }

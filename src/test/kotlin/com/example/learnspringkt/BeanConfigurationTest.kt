@@ -3,6 +3,7 @@ package com.example.learnspringkt
 import com.example.learnspringkt.config.BeanConfiguration
 import com.example.learnspringkt.config.ConfigMerge
 import com.example.learnspringkt.pojo.Animal
+import com.example.learnspringkt.pojo.ClientService
 import com.example.learnspringkt.pojo.Product
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -27,6 +28,15 @@ class BeanConfigurationTest {
         assertThatBeanExists("Plane", Product::class.java)
         assertThatBeanExists("Plane", Product::class.java)
         assertThatBeanExists("panda", Animal::class.java)
+    }
+
+    @Test
+    fun `check assert is initialized`() {
+        val clientName = "clientService"
+        assertThatBeanExists(clientName, ClientService::class.java)
+        val clientService: ClientService = context.getBean(ClientService::class.java)
+        assertEquals("Thomas", clientService.name)
+        assertEquals("Mafela", clientService.surname)
     }
 
     private fun assertThatBeanExists(beanName: String, beanClass: Class<*>) {
